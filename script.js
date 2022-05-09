@@ -15,7 +15,6 @@ const keyLayout_en_rows = [
     ]
 ];
 
-
 document.addEventListener('keyup', (event) => {
     writeTextarea(event.key)
     color.onclick = function() {
@@ -178,12 +177,7 @@ function writeTextarea (input){
             }
     }
 }
-// document.addEventListener('keydown', function(event) {
-//     if (event.code == 'KeyZ' && (event.ctrlKey || event.metaKey)) {
-//     //   alert('Undo!')
-//     renderKeyboard(1, true)
-//     }
-//   });
+
 function renderUpperCase(){
     document.querySelectorAll('.keys').forEach((key) => {
         key.innerHTML =  key.innerHTML.toUpperCase()

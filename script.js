@@ -49,5 +49,76 @@ containerDiv.appendChild(dispalyDiv);
 let defLang = 0;
 let replaceCh = false;
 renderKeyboard(defLang, replaceCh);
+function renderKeyboard(languageCode, replaceCh){
+
+   for (let i = 1; i <= 5 ; i++){
+    const rowCreatte = document.createElement("div");
+    rowCreatte.classList.add(`row`);
+    rowCreatte.setAttribute('id',`${i}`);
+    container_.appendChild(rowCreatte);
+
+   }
+    for (let i = 0; i <= keyLayout_en_rows[languageCode].length-1 ; i++){
+        // console.log(keyLayout_en_rows[languageCode][i]);
+        for (let k = 0; k <= keyLayout_en_rows[languageCode][i].length-1 ; k++){
+            const keyboardBody = document.createElement("div");
+
+            switch (keyLayout_en_rows[languageCode][i][k]){
+                case 'space':
+                    keyboardBody.classList.add(`space`);
+                    keyboardBody.classList.add(`optKey`);
+                    break;
+                case 'Backspace':
+                    keyboardBody.classList.add(`Backspace`);
+                    keyboardBody.classList.add(`optKey`);
+                    break;
+                case 'Tab':
+                    keyboardBody.classList.add(`optKey`);
+                    break;
+                case 'caps':
+                    keyboardBody.classList.add(`caps`);
+                    keyboardBody.classList.add(`optKey`);
+                    break;
+                case 'Enter':
+                    keyboardBody.classList.add(`Enter`);
+                    keyboardBody.classList.add(`optKey`);
+                    break;
+                case 'Shift':
+                    keyboardBody.classList.add(`Shift`);
+                    keyboardBody.classList.add(`optKey`);
+                    break;
+                case 'ctrl':
+                    keyboardBody.classList.add(`ctrl`);
+                    keyboardBody.classList.add(`optKey`);
+                    break;
+                case 'opt':
+                    keyboardBody.classList.add(`opt`);
+                    keyboardBody.classList.add(`optKey`);
+                    break;
+                case 'cmd':
+                    keyboardBody.classList.add(`cmd'`);
+                    keyboardBody.classList.add(`optKey`);
+                    break;
+
+                default:
+                    keyboardBody.classList.add(`keys`);
+            }
+
+
+            keyboardBody.innerHTML = `${keyLayout_en_rows[languageCode][i][k]}`;
+
+            if (replaceCh){
+                document.getElementById(`${i+1}`).replaceChild(keyboardBody, keyboardBody);
+                console.log('true');
+            } else {
+                document.getElementById(`${i+1}`).appendChild(keyboardBody);
+                console.log('false');
+            }
+            keyboardBody.addEventListener("click", keyClick);
+        }
+   }
+}
+
+
 
 

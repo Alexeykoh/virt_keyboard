@@ -51,4 +51,3 @@ let replaceCh = false;
 renderKeyboard(defLang, replaceCh);
 
 
-

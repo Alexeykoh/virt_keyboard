@@ -119,6 +119,62 @@ function renderKeyboard(languageCode, replaceCh){
    }
 }
 
+function keyClick () {
+    writeTextarea(this.innerHTML)
+}
 
+function writeTextarea (input){
+    let textAreaValue = document.getElementById('textAreaId').value;
 
+    switch (input){
+        case ('Backspace'):
+            let backspace = textAreaValue;
+            backspace = backspace.substring(0, backspace.length-1);
+            // console.log(typeof input, input);
+            document.getElementById('textAreaId').value = backspace;
+            break;
+        case 'space':
+            textOutput(' ');
+            break;
 
+        case 'Meta':
+        case 'ctrl':
+        case 'command':
+            break;
+
+        case 'Alt':
+        case 'alt':
+            break;
+
+        case ('Shift'):
+            break;
+
+        case ('Enter'):
+            nextLine()
+            function nextLine (){
+                document.getElementById('textAreaId').value += '\r\n';
+            }
+            break;
+
+        case ('Tab'):
+            document.getElementById('textAreaId').value += '    ';
+            break;
+
+        case 'Caps':
+        case 'CapsLock':
+        case 'caps':
+            renderUpperCase();
+            break;
+
+        case 'ctrl':
+        case 'Control':
+            break;
+
+        default:
+            textOutput(input);
+            function textOutput (textInput){
+                document.getElementById('textAreaId').value += textInput;
+                // console.log(typeof input, input);
+            }
+    }
+}
